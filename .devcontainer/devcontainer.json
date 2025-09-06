@@ -1,0 +1,9 @@
+{
+  "name": "Test Tig Feature",
+  "image": "mcr.microsoft.com/devcontainers/base:ubuntu",
+  "features": {
+    "./src/tig": {
+      "version": "latest"
+    }
+  }
+}
