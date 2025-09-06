@@ -1,17 +1,8 @@
 {
-    "test_default": {
-        "image": "mcr.microsoft.com/devcontainers/base:ubuntu",
-        "features": {
-            "tig": {}
-        }
-    },
-    "test_with_version": {
-        "image": "mcr.microsoft.com/devcontainers/base:ubuntu", 
-        "features": {
-            "tig": {
-                "version": "latest"
-            }
-        }
+  "test_all": {
+    "image": "mcr.microsoft.com/devcontainers/base:ubuntu",
+    "features": {
+      "tig": {}
     }
+  }
 }
-
