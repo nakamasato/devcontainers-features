@@ -1,0 +1,21 @@
+# .github/workflows/test.yml
+name: Test Features
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+      
+      - name: Test tig feature
+        uses: devcontainers/ci@v0.3
+        with:
+          imageName: test-tig
+          runCmd: tig --version
+
