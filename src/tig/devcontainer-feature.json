@@ -1,0 +1,17 @@
+{
+    "name": "Tig",
+    "id": "tig",
+    "version": "1.0.0",
+    "description": "Installs tig, a text-mode interface for Git",
+    "documentationURL": "https://github.com/jonas/tig",
+    "options": {
+        "version": {
+            "type": "string",
+            "proposals": [
+                "latest"
+            ],
+            "default": "latest",
+            "description": "Select version of tig to install"
+        }
+    }
+}
