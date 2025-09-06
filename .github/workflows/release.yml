@@ -1,6 +1,10 @@
-name: "Release dev container features & Generate Documentation"
+name: release
 on:
   workflow_dispatch:
+
+permissions:
+  pull-requests: write
+  contents: write
 
 jobs:
   deploy:
@@ -19,7 +23,6 @@ jobs:
           publish-features: "true"
           base-path-to-features: "./src"
           generate-docs: "true"
-          
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
