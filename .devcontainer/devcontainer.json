@@ -4,6 +4,9 @@
   "features": {
     "./src/tig": {
       "version": "latest"
+    },
+    "./src/gcloud": {
+      "version": "latest"
     }
   }
 }
