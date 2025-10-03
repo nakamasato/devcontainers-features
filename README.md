@@ -4,6 +4,7 @@ Devcontainer features
 
 ## Features List
 
+- [gcloud](src/gcloud)
 - [tig](src/tig)
 
 ## References

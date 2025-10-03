@@ -13,6 +13,7 @@ jobs:
       matrix:
         features:
           - tig
+          - gcloud
         baseImage:
           - debian:latest
           - ubuntu:latest
@@ -32,6 +33,7 @@ jobs:
       matrix:
         features:
           - tig
+          - gcloud
     steps:
       - uses: actions/checkout@v4
 
