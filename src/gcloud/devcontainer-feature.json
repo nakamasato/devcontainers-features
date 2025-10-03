@@ -1,0 +1,17 @@
+{
+    "name": "Google Cloud SDK",
+    "id": "gcloud",
+    "version": "1.0.0",
+    "description": "Installs Google Cloud SDK (gcloud CLI)",
+    "documentationURL": "https://cloud.google.com/sdk/docs",
+    "options": {
+        "version": {
+            "type": "string",
+            "proposals": [
+                "latest"
+            ],
+            "default": "latest",
+            "description": "Select version of Google Cloud SDK to install"
+        }
+    }
+}
