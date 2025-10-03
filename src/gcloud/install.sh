@@ -10,17 +10,28 @@ echo "Installing Google Cloud SDK..."
 # 必要なパッケージのインストール
 if [ "${ID}" = "ubuntu" ] || [ "${ID}" = "debian" ]; then
     apt-get update
-    apt-get install -y curl apt-transport-https ca-certificates gnupg
+    apt-get install -y curl python3 python3-pip
 
-    # Google Cloud public key をインポート
-    curl https://packages.cloud.google.com/apt/doc/apt-key.gpg | gpg --dearmor -o /usr/share/keyrings/cloud.google.gpg
+    # Google Cloud SDK をダウンロードしてインストール（aptの依存関係問題を回避）
+    ARCH=$(uname -m)
+    if [ "${ARCH}" = "x86_64" ]; then
+        GCLOUD_ARCH="x86_64"
+    elif [ "${ARCH}" = "aarch64" ] || [ "${ARCH}" = "arm64" ]; then
+        GCLOUD_ARCH="arm"
+    else
+        echo "Unsupported architecture: ${ARCH}"
+        exit 1
+    fi
 
-    # Google Cloud SDK リポジトリを追加
-    echo "deb [signed-by=/usr/share/keyrings/cloud.google.gpg] https://packages.cloud.google.com/apt cloud-sdk main" | tee -a /etc/apt/sources.list.d/google-cloud-sdk.list
+    curl -O "https://dl.google.com/dl/cloudsdk/channels/rapid/downloads/google-cloud-cli-linux-${GCLOUD_ARCH}.tar.gz"
+    tar -xf "google-cloud-cli-linux-${GCLOUD_ARCH}.tar.gz" -C /usr/local
+    /usr/local/google-cloud-sdk/install.sh --quiet --path-update=false
+    rm "google-cloud-cli-linux-${GCLOUD_ARCH}.tar.gz"
 
-    # Google Cloud SDK をインストール
-    apt-get update
-    apt-get install -y google-cloud-cli
+    # パスを設定
+    ln -sf /usr/local/google-cloud-sdk/bin/gcloud /usr/local/bin/gcloud
+    ln -sf /usr/local/google-cloud-sdk/bin/gsutil /usr/local/bin/gsutil
+    ln -sf /usr/local/google-cloud-sdk/bin/bq /usr/local/bin/bq
 
 # Alpine系
 elif [ "${ID}" = "alpine" ]; then
